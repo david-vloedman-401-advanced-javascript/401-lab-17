@@ -20,13 +20,19 @@ server.on('connection', socket => {
   });
 });
 
-
+/**
+ * 
+ * @param {*} buffer 
+ */
 const handleData = buffer => {
   let message = JSON.parse(buffer.toString().trim());
   broadcast(message);
 };
 
-
+/**
+ * 
+ * @param {*} message 
+ */
 function broadcast(message) {
   let payload = JSON.stringify(message);
   for (let socket in socketPool) {
